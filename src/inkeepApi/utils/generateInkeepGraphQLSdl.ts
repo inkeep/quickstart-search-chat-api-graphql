@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+import fetch from 'node-fetch-commonjs';
 import { printSchema, buildClientSchema, GraphQLSchema, getIntrospectionQuery } from 'graphql';
 import fs from 'fs';
 

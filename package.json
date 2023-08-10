@@ -1,5 +1,5 @@
 {
-  "name": "quick-start-search-chat-api",
+  "name": "quick-start-inkeep-search-chat-api",
   "version": "0.0.1",
   "description": "Quickstart for calling the Inkeep Search and Chat API",
   "main": "main.ts",
@@ -7,23 +7,25 @@
   "author": "Nick Gomez",
   "license": "MIT",
   "private": true,
-  "type": "module",
   "devDependencies": {
-    "@genql/cli": "^6.1.0",
+    "@graphql-codegen/cli": "^5.0.0",
+    "@graphql-codegen/client-preset": "^4.1.0",
     "@types/node": "^20.4.2",
     "graphql": "^16.7.1",
     "graphql-cli": "^4.1.0",
-    "node-fetch": "^3.3.2",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.6"
   },
   "dependencies": {
+    "@urql/core": "^4.1.1",
     "dotenv": "^16.3.1",
-    "graphql-ws": "^5.14.0"
+    "graphql-ws": "^5.14.0",
+    "node-fetch-commonjs": "^3.3.1",
+    "ws": "^8.13.0"
   },
   "scripts": {
-    "main": "ts-node src/index.ts",
-    "generate-client": "genql --endpoint https://api.inkeep.com/graphql --output ./src/inkeepApiClient",
-    "generate-graphql-sdl": "node --loader ts-node/esm src/generateInkeepGraphQLSdl.ts"
+    "example": "ts-node src/example.ts",
+    "inkeep-codegen": "graphql-codegen --config codegen-inkeep.ts",
+    "inkeep-generate-sdl": "ts-node src/inkeepApi/utils/generateInkeepGraphQLSdl.ts"
   }
 }
