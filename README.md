@@ -12,8 +12,8 @@ This repository serves as a quick start guide to using Inkeep's AI search and ch
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/inkeep/quick-start-search-chat-api.git
-   cd quick-start-search-chat-api
+   git clone https://github.com/inkeep/quickstart-search-chat-api-graphql.git
+   cd quickstart-search-chat-api-graphql
    ```
 
 2. **Install the dependencies**
