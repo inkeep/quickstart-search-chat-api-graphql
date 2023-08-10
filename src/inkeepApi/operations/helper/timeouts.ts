@@ -1,4 +1,4 @@
-// timeoutUtils.ts
+// timeouts.ts
 
 // Timeout values in milliseconds
 const FIRST_RESPONSE_TIMEOUT = 30000; // 30 seconds
