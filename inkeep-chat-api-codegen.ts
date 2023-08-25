@@ -2,7 +2,7 @@ import { CodegenConfig } from '@graphql-codegen/cli';
 
 const config: CodegenConfig = {
   schema: 'https://api.inkeep.com/graphql',
-  documents: ['src/**/*.tsx', 'src/**/*.ts'],
+  documents: ['src/inkeepApi/**/*.ts'],
   ignoreNoDocuments: true,
   generates: {
     './src/inkeepApi/generated/': {

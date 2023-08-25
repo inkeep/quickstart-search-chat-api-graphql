@@ -1,9 +1,10 @@
-import { gql } from '@urql/core';
-import createInkeepClient from '../createInkeepClient';
-import type { ContinueExistingChatSubscription, ContinueExistingChatSubscriptionVariables } from '../generated/graphql';
-import { setupTimeouts, clearResponseTimeout } from './helper/timeouts';
-
-const client = createInkeepClient();
+import { gql } from "@urql/core";
+import createInkeepClient from "./helper/createInkeepClient";
+import type {
+  ContinueExistingChatSubscription,
+  ContinueExistingChatSubscriptionVariables,
+} from "../generated/graphql";
+import { setupTimeouts, clearResponseTimeout } from "./helper/timeouts";
 
 const CONTINUE_EXISTING_CHAT_SUB = gql`
   subscription ContinueExistingChat($input: ContinueChatResultInput!) {
@@ -22,9 +23,16 @@ const CONTINUE_EXISTING_CHAT_SUB = gql`
   }
 `;
 
-const continueExistingChat = async (variables: ContinueExistingChatSubscriptionVariables): Promise<ContinueExistingChatSubscription['continueChatResult']> => {
+const continueExistingChat = async (
+  variables: ContinueExistingChatSubscriptionVariables,
+  apiKey?: string
+): Promise<ContinueExistingChatSubscription["continueChatResult"]> => {
+  const client = createInkeepClient(apiKey);
   return new Promise((resolve, reject) => {
-    const subscriptionClient = client.subscription<ContinueExistingChatSubscription, ContinueExistingChatSubscriptionVariables>(CONTINUE_EXISTING_CHAT_SUB, variables);
+    const subscriptionClient = client.subscription<
+      ContinueExistingChatSubscription,
+      ContinueExistingChatSubscriptionVariables
+    >(CONTINUE_EXISTING_CHAT_SUB, variables);
 
     const subscription = subscriptionClient.subscribe((onResult) => {});
 
@@ -34,8 +42,11 @@ const continueExistingChat = async (variables: ContinueExistingChatSubscriptionV
       clearResponseTimeout(timeouts);
 
       if (!onResult || onResult.error) {
-        console.error('Error in receiving the response:', onResult?.error?.message); // Log the error
-        reject(new Error('Error in receiving the response'));
+        console.error(
+          "Error in receiving the response:",
+          onResult?.error
+        ); // Log the error
+        reject(new Error("Error in receiving the response"));
         return;
       }
 

@@ -7,14 +7,6 @@ import dotenv from 'dotenv';
 // Load environment variables from a .env file
 dotenv.config();
 
-const organizationId = process.env.INKEEP_ORGANIZATION_ID;
-const integrationId = process.env.INKEEP_INTEGRATION_ID;
-
-if (!organizationId || !integrationId) {
-  console.error('Error: INKEEP_ORGANIZATION_ID and/or INKEEP_INTEGRATION_ID environment variables are not defined');
-  process.exit(1);
-}
-
 const runChat = async () => {
   try {
 
@@ -22,8 +14,6 @@ const runChat = async () => {
     const input: NewChatSubscriptionVariables = {
       input: {
         messageInput: "How do I get started?",
-        organizationId,
-        integrationId,
       },
     };
 
@@ -48,8 +38,6 @@ const runChat = async () => {
     // **Example 3**: Perform a search query
     const searchInput: SearchInput = {
       searchQuery: "How do I get started?",
-      organizationId,
-      integrationId,
     };
     
     const searchHits = await search(searchInput);
