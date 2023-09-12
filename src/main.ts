@@ -3,6 +3,7 @@ import continueExistingChat from './inkeepApi/operations/continueExistingChat';
 import { search } from './inkeepApi/operations/search'; // Import the search function
 import type { ContinueExistingChatSubscriptionVariables, NewChatSubscriptionVariables, SearchInput } from './inkeepApi/generated/graphql';
 import dotenv from 'dotenv';
+import { chatMode } from './inkeepApi/operations/helper/apiConsts';
 
 // Load environment variables from a .env file
 dotenv.config();

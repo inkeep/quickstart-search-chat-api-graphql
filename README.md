@@ -29,35 +29,42 @@ This repository serves as a quick start guide to using Inkeep's AI search and ch
     INKEEP_ORGANIZATION_ID=<your-organization-id>
     INKEEP_INTEGRATION_ID=<your-integration-id>
     INKEEP_INTEGRATION_ID=<your-api-key-id>
+    INKEEP_CHAT_MODE=Turbo
    ```
+
+    INKEEP_CHAT_MODE is optional and useful to set to `Turbo` in development environments for quicker iteration.
 
 4. **Generate TypeScript Types**
    **If you change or add any GraphQL query, mutation, or subscription**, run the below to re-generate TypeScript types:
 
    ```bash
-   yarn inkeep-codegen
+   yarn inkeep-chat-api-codegen
    ```
+
+    This only looks for operations within the `./inkeepApi` folder. We generally recommend putting all Inkeep API operations in that folder.
 
 5. **Run the Example**
 
    ```bash
-   yarn example
+   yarn dev
    ```
 
 ## Documentation and GraphQL Playground
 
 You can learn more about the Inkeep search and chat API at [docs.inkeep.com](https://docs.inkeep.com/inkeep-api/using-the-graphql-playground) or try out the playground and view possible input parameters and return types at [api.inkeep.com/graphql](https://api.inkeep.com/graphql).
 
+There's three types of operations in GraphQL: `query`, `mutation`, and `subscription`. Chat messages are done over websockets via GraphQL subscriptions. Search and other operations are done via `query`.
+
 ## Understanding the Code
 
-### example.ts
+### main.ts
 
-The `src/example.ts` file demonstrates how to leverage helper functions for calling the API. These functions are not necessary for every single API call; you can use the GraphQL and `gql` pattern in your own business logic as needed.
+The `src/main.ts` file demonstrates how to leverage helper functions for calling the API. These functions are not necessary for every single API call; you can use the GraphQL and `gql` pattern in your own business logic as needed.
 
 ### package.json Scripts
 
-- `example`: Run the example TypeScript file to see how to interact with the API.
-- `inkeep-codegen`: Generates TypeScript types for GraphQL queries and mutations.
+- `dev`: Run the dev TypeScript file to see how to interact with the API.
+- `inkeep-chat-api-codegen`: Generates TypeScript types for GraphQL queries and mutations.
 - `inkeep-generate-sdl`: Generates SDL for Inkeep's GraphQL schema.
 
 ## Dependencies
@@ -78,6 +85,8 @@ This repository provides convenient helper functions to interact with Inkeep's A
 3. **Performing a Search**: You can also search the Inkeep database using the `search` function. This takes in a search input and returns search results, including hit IDs, URLs, and titles.
 
 The chat examples were done in a way to only resolve once the chat response has been fully streamed back. This can be easily modified if you have a UX that requires streaming.
+
+If you are calling this from a backend and are looking to stream it to a front-end, you can do so via GraphQL subscriptions as well or HTTPS SSE protocol, whatever works best for your server.
 
 _You should customize these functions to match the exact fields in the output that you require. You can use similar patterns to call any endpoint in the API._
 

@@ -43,6 +43,12 @@ type ChatResult {
   sessionId: ID!
   message: BotMessage!
   isEnd: Boolean!
+  postChatResultSignals: PostChatResultSignals
+}
+
+type PostChatResultSignals {
+  botAbleToAnswerGivenSources: Boolean
+  suggestedFollowupQuestions: [String!]
 }
 
 type ChatSession {

@@ -22,10 +22,10 @@ async function fetchSchema(endpoint: string): Promise<string> {
   return printSchema(schema);
 }
 
-const endpoint = 'https://api.ingest.inkeep.com/graphql';
+const endpoint = 'https://api.inkeep.com/graphql';
 
 fetchSchema(endpoint).then((schemaSDL) => {
-  fs.writeFileSync('./inkeep-ingest-api-sdl.graphql', schemaSDL);
+  fs.writeFileSync('./inkeep-api-sdl.graphql', schemaSDL);
   console.log('Schema has been saved to inkeep-api-sdl.graphql');
 }).catch((error) => {
   console.error('An error occurred:', error);
