@@ -49,6 +49,7 @@ export type ChatResult = {
   __typename?: 'ChatResult';
   isEnd: Scalars['Boolean']['output'];
   message: BotMessage;
+  postChatResultSignals?: Maybe<PostChatResultSignals>;
   sessionId: Scalars['ID']['output'];
 };
 
@@ -207,6 +208,12 @@ export enum OutputMode {
   Python = 'PYTHON',
   Sql = 'SQL'
 }
+
+export type PostChatResultSignals = {
+  __typename?: 'PostChatResultSignals';
+  botAbleToAnswerGivenSources?: Maybe<Scalars['Boolean']['output']>;
+  suggestedFollowupQuestions?: Maybe<Array<Scalars['String']['output']>>;
+};
 
 export type Query = {
   __typename?: 'Query';
