@@ -5,7 +5,7 @@ This repository serves as a quick start guide to using Inkeep's AI search and ch
 ## Requirements
 
 - Node.js (v14+)
-- Yarn
+- Bun (`npm install -g bun`)
 
 ## Getting Started
 
@@ -19,7 +19,7 @@ This repository serves as a quick start guide to using Inkeep's AI search and ch
 2. **Install the dependencies**
 
    ```bash
-   yarn install
+   bun install
    ```
 
 3. **Configure Environment Variables**
@@ -28,7 +28,7 @@ This repository serves as a quick start guide to using Inkeep's AI search and ch
    ```env
     INKEEP_ORGANIZATION_ID=<your-organization-id>
     INKEEP_INTEGRATION_ID=<your-integration-id>
-    INKEEP_INTEGRATION_ID=<your-api-key-id>
+    INKEEP_API_KEY=<your-api-key>
     INKEEP_CHAT_MODE=Turbo
    ```
 
@@ -38,7 +38,7 @@ This repository serves as a quick start guide to using Inkeep's AI search and ch
    **If you change or add any GraphQL query, mutation, or subscription**, run the below to re-generate TypeScript types:
 
    ```bash
-   yarn inkeep-chat-api-codegen
+   bun inkeep-chat-api-codegen
    ```
 
     This only looks for operations within the `./inkeepApi` folder. We generally recommend putting all Inkeep API operations in that folder.
@@ -46,7 +46,7 @@ This repository serves as a quick start guide to using Inkeep's AI search and ch
 5. **Run the Example**
 
    ```bash
-   yarn dev
+   bun dev
    ```
 
 ## Documentation and GraphQL Playground
